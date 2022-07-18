@@ -1,6 +1,9 @@
 {
     "env" : {
-        "token" : "NjI4MTY4MDIwMTM2ODIwNzM2.G-Hqoi.b-0SxSCUzDZmOCB0QPSsZ_ItHC9s7EEyqIU_F8"
+        "token" : "NjI4MTY4MDIwMTM2ODIwNzM2.G-Hqoi.b-0SxSCUzDZmOCB0QPSsZ_ItHC9s7EEyqIU_F8",
+        "client_id" : "628168020136820736",
+        "guild_id" : "812789462274539570"
+
     },
     "client": {
         "prefix": "!",
@@ -11,6 +14,6 @@
         "color" : "#ff0000",
         "picture": "https://i.imgur.com/8U9Ae5d.png",
         "thanks": "Eh merci Psybot",
-        "logoServeur": "https://i.imgur.com/hZu2RBT.png"
+        "logo_serveur": "https://i.imgur.com/hZu2RBT.png"
     }
 }
