@@ -6,5 +6,11 @@
         "prefix": "!",
         "activity": "EN DEV",
         "type": "PLAYING"
+    },
+    "embed": {
+        "color" : "#ff0000",
+        "picture": "https://i.imgur.com/8U9Ae5d.png",
+        "thanks": "Eh merci Psybot",
+        "logoServeur": "https://i.imgur.com/hZu2RBT.png"
     }
 }
