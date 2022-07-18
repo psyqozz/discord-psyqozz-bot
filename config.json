@@ -1,0 +1,10 @@
+{
+    "env" : {
+        "token" : "NjI4MTY4MDIwMTM2ODIwNzM2.G-Hqoi.b-0SxSCUzDZmOCB0QPSsZ_ItHC9s7EEyqIU_F8"
+    },
+    "client": {
+        "prefix": "!",
+        "activity": "EN DEV",
+        "type": "PLAYING"
+    }
+}
