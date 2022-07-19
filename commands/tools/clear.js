@@ -10,7 +10,7 @@ exports.run = async (client, message, args) => {
         message.delete();
 
         if(args[0] >= 1 && args[0] <= 100){
-            message.channel.bulkDelete(args[0]);
+            message.channel.bulkDelete(args[0], true)
             const description = args[0] > 1 ? config.tools.multiple_message : config.tools.one_message
             const clearEmbed = new MessageEmbed()
             .setColor(config.embed.color)
@@ -18,7 +18,7 @@ exports.run = async (client, message, args) => {
             .setDescription(`🛠 - ${args[0]} ${description}`)
             .setTimestamp()
             .setFooter({ text: config.embed.thanks, iconURL: config.embed.picture });
-            message.channel.send({ embeds: [clearEmbed] });
+            message.channel.send({ embeds: [clearEmbed] })
         } else {
             const wrongEmbed = new MessageEmbed()
             .setColor(config.embed.color)
