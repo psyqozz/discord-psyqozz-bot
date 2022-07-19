@@ -9,6 +9,7 @@ const client = new Client({intents: [
     ]
 })
 client.commands = new Collection();
+client.interactions = new Collection();
 
 
 const commandFiles = fs.readdirSync('./commands/').filter(f => f.endsWith('.js'));
@@ -29,6 +30,14 @@ commandSubFolders.forEach(folder => {
         client.commands.set(props.help.name, props)
     }
 })
+
+const interactionsFiles = fs.readdirSync('./interactions/').filter(f => f.endsWith('.js'));
+for (const file of interactionsFiles) {
+    const props = require(`./interactions/${file}`);
+
+    console.log(`L'intéraction ${file} est chargée avec succès !`)
+    client.interactions.set(props.help.name, props)
+}
 
 const eventFiles = fs.readdirSync('./events/').filter(f => f.endsWith('.js'));
 for (const file of eventFiles) {

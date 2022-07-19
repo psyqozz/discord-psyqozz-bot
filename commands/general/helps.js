@@ -17,6 +17,8 @@ exports.run = async (client, message, args) => {
 	.addFields(
 		{ name: '**🌍 - Général**', value: '`!help, !bark, !jerefuse, !carlos, !monia, !#`' },
 		{ name: '**⚔ - Modération**', value: '`!ban, !kick`' },
+		{ name: '**🛠 - Outils**', value: '`!clear`' },
+
 	)
 	.setFooter({ text: config.embed.thanks, iconURL: config.embed.picture });
 
