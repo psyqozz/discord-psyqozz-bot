@@ -17,7 +17,7 @@ exports.run = async (client, message, args) => {
 	.setThumbnail(username.displayAvatarURL())
 	.addFields(
 		{ name: '**ID**', value: `${username.id}`},
-		{ name: '**Pseudo**', value: `${nickname}`},
+		{ name: '**Pseudo**', value: `<@${nickname}>`},
         { name: '**Modérateur**', value: `${member.kickable ? '🟢' : '🔴'}`, inline: true },
         { name: '**Bot**', value: `${member.user.bot ? '🟢' : '🔴'}`, inline: true},
         { name: '**Rôles**', value: `${member.roles.cache.map(role => role).join(',')}`},

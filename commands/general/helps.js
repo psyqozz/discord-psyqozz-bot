@@ -15,12 +15,8 @@ exports.run = async (client, message, args) => {
 	.setDescription('Nom de la commande et sa déscription')
 	.setThumbnail(config.embed.picture)
 	.addFields(
-		{ name: '**!help**', value: '`Affiche les commandes`' },
-		{ name: '**!bark**', value: '`Test tu verras 😏`' },
-		{ name: '**!jerefuse**', value: '`Non je refuse`' },
-		{ name: '**!carlos**', value: '`Numéro 1`' },
-		{ name: '**!monia**', value: '`EBK EBK`' },
-		{ name: '**!#**', value: '`Humour tsé`' },
+		{ name: '**🌍 - Général**', value: '`!help, !bark, !jerefuse, !carlos, !monia, !#`' },
+		{ name: '**⚔ - Modération**', value: '`!ban, !kick`' },
 	)
 	.setFooter({ text: config.embed.thanks, iconURL: config.embed.picture });
 
