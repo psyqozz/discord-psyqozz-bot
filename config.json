@@ -3,7 +3,6 @@
         "token" : "NjI4MTY4MDIwMTM2ODIwNzM2.G-Hqoi.b-0SxSCUzDZmOCB0QPSsZ_ItHC9s7EEyqIU_F8",
         "client_id" : "628168020136820736",
         "guild_id" : "812789462274539570"
-
     },
     "client": {
         "prefix": "!",
@@ -19,6 +18,16 @@
     "tools" : {
         "one_message" : "message a été supprimé",
         "multiple_message" : "messages ont étaient supprimés"
+    },
+    "channel" : {
+        "rule_id": "843193277980344411",
+        "emoji_id" : "999289212518023199",
+        "role_id" : "844953322548887612",
+        "title" : "**Acceptez le règlement de Psyqozz_ pour accéder à l'intégralité du serveur **",
+        "rule_title" : "**Règlement :**",
+        "rules" : "- Respectez ceux que vous ne connaissez pas.\n - Pas de racisme/sexisme/homophobie/... \n - Toute pub sera sanctionné d'un ban. \n - Si vous avez un soucis, une demande de unban/unmute, une plainte, n'identifez personne. Ouvrez un ticket \n - Pas de haine envers d'autre gens \n - Pas de photo/pseudo incorrect \n",
+        "sanction_title" : "**Sanction :**",
+        "sanction" : "Tout ce qui va à l'encontre du règlement et de la bien séance sera sanctionné d'un mute ou d'un ban life suivant le cas. Pour accepter le règlement du serveur veuillez interagir avec la réaction ci-dessous !"
     },
     "interaction" : {
         "hello" : [
@@ -37,7 +46,7 @@
             "Je t'aime bien toi",
             "Ptdr t ki",
             "On a jamais vu pareil phacochère", 
-            " Copié mais jamais égalé tsé", 
+            "Copié mais jamais égalé tsé", 
             "Tsé",
             "C'est le discord de Psyqozz Ici",
             "Je sais pas quoi te dire là",
@@ -96,7 +105,24 @@
             "Alors la c'est mal me connaitre",
             "J'ai rien fait",
             "Ca tire à balle réel là",
-            "Moi aussi"
+            "Moi aussi",
+            "Trop pas",
+            "J'aurais pas dit mieux",
+            "Réel",
+            "Ton père il travaille pas chez Nitendo parce que t'es une DS",
+            "Super",
+            "Ca fait beaucoup la non",
+            "Sexy timeee",
+            "Big boobs",
+            "1v1 Gare du Nord",
+            "T mort",
+            "Bisous, je m'envole",
+            "J'aime bien les blondes tsé",
+            "Tu es mon oxygène",
+            "C'était sur enfaite",
+            "🌍🌍",
+            "<:PZ_flag2:882700054975107112> <:PZ_flag2:882700054975107112>",
+            "<a:haha:999672565452787813> <a:haha:999672565452787813>"
         ]
     }
 }

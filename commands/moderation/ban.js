@@ -17,7 +17,9 @@ exports.run = async (client, message, args) => {
         .setDescription(`⛔ - ban <member> <raison>`)
         .setTimestamp()
         .setFooter({ text: config.embed.thanks, iconURL: config.embed.picture });
-        if(!user || !reason) return message.channel.send({ embeds: [wrongEmbed] });
+        if(!user || !reason) return message.channel.send({ embeds: [wrongEmbed] }).then(mes => {
+            mes.delete({timeout: 5000});
+        });
 
         const BannedEmbed = new MessageEmbed()
         .setColor(config.embed.color)
@@ -29,7 +31,9 @@ exports.run = async (client, message, args) => {
         .setFooter({ text: config.embed.thanks, iconURL: config.embed.picture });
 
         message.guild.members.ban(user, {reason: reason});
-        message.channel.send({ embeds: [BannedEmbed] });
+        message.channel.send({ embeds: [BannedEmbed] }).then(mes => {
+            mes.delete({timeout: 5000});
+        });
     } else {
         const noPermsEmbed = new MessageEmbed()
         .setColor(config.embed.color)
@@ -38,8 +42,9 @@ exports.run = async (client, message, args) => {
         .setTimestamp()
         .setFooter({ text: config.embed.thanks, iconURL: config.embed.picture });
         
-        message.channel.send({ embeds: [noPermsEmbed] });
-        message.delete({timeout: 1000});
+        message.channel.send({ embeds: [noPermsEmbed] }).then(mes => {
+            mes.delete({timeout: 5000});
+        });
     }
   
 }

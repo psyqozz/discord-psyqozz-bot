@@ -5,11 +5,13 @@ const fs = require('fs');
 const client = new Client({intents: [
         Intents.FLAGS.GUILDS,
         Intents.FLAGS.GUILD_MESSAGES,
-        Intents.FLAGS.GUILD_MEMBERS
+        Intents.FLAGS.GUILD_MEMBERS,
+        Intents.FLAGS.GUILD_MESSAGE_REACTIONS
     ]
 })
 client.commands = new Collection();
 client.interactions = new Collection();
+client.manageRoles = new Collection();
 
 
 const commandFiles = fs.readdirSync('./commands/').filter(f => f.endsWith('.js'));
@@ -39,6 +41,14 @@ for (const file of interactionsFiles) {
     client.interactions.set(props.help.name, props)
 }
 
+const manageRolesFiles = fs.readdirSync('./manageRoles/').filter(f => f.endsWith('.js'));
+for (const file of manageRolesFiles) {
+    const props = require(`./manageRoles/${file}`);
+
+    console.log(`Le gestionnaire de role ${file} est chargée avec succès !`)
+    client.manageRoles.set(props.help.name, props)
+}
+
 const eventFiles = fs.readdirSync('./events/').filter(f => f.endsWith('.js'));
 for (const file of eventFiles) {
     const event = require(`./events/${file}`)
@@ -48,5 +58,6 @@ for (const file of eventFiles) {
         client.on(event.name, (...args) => event.execute(...args, client))
     }
 }
+
 
 client.login(config.env.token)

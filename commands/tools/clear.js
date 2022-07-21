@@ -18,7 +18,9 @@ exports.run = async (client, message, args) => {
             .setDescription(`🛠 - ${args[0]} ${description}`)
             .setTimestamp()
             .setFooter({ text: config.embed.thanks, iconURL: config.embed.picture });
-            message.channel.send({ embeds: [clearEmbed] })
+            message.channel.send({ embeds: [clearEmbed] }).then(mes => {
+                mes.delete({timeout: 5000});
+            });
         } else {
             const wrongEmbed = new MessageEmbed()
             .setColor(config.embed.color)
@@ -26,7 +28,9 @@ exports.run = async (client, message, args) => {
             .setDescription(`⛔ - il faut préciser un nombre entre 1 et 99`)
             .setTimestamp()
             .setFooter({ text: config.embed.thanks, iconURL: config.embed.picture });
-            message.channel.send({ embeds: [wrongEmbed] });
+            message.channel.send({ embeds: [wrongEmbed] }).then(mes => {
+                mes.delete({timeout: 5000});
+            });
         }
     } else {
         const noPermsEmbed = new MessageEmbed()
@@ -36,9 +40,9 @@ exports.run = async (client, message, args) => {
         .setTimestamp()
         .setFooter({ text: config.embed.thanks, iconURL: config.embed.picture });
         
-        message.channel.send({ embeds: [noPermsEmbed] });
-        message.delete({timeout: 1000});
-
+        message.channel.send({ embeds: [noPermsEmbed] }).then(mes => {
+            mes.delete({timeout: 5000});
+        });
     }
   
 }

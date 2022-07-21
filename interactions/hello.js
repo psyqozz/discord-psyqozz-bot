@@ -15,7 +15,7 @@ exports.run = async (client, message, args) => {
         if(message.content.indexOf(e) !== -1) {
              const AnwserEmbed = new MessageEmbed()
             .setColor(config.embed.color)
-            .setTitle(`**Hola ça va ${nickname}**`)
+            .setTitle(`**Hola ça va ${nickname} **`)
             .setFooter({ text: config.embed.thanks, iconURL: config.embed.picture });
         
             return message.channel.send({ embeds: [AnwserEmbed] });

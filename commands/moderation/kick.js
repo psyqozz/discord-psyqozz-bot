@@ -17,7 +17,9 @@ exports.run = async (client, message, args) => {
         .setDescription(`⛔ - kick <member> <raison>`)
         .setTimestamp()
         .setFooter({ text: config.embed.thanks, iconURL: config.embed.picture });
-        if(!user || !reason) return message.channel.send({ embeds: [wrongEmbed] });
+        if(!user || !reason) return message.channel.send({ embeds: [wrongEmbed] }).then(mes => {
+            mes.delete({timeout: 5000});
+        });
 
         const KickedEmbed = new MessageEmbed()
         .setColor(config.embed.color)
@@ -29,7 +31,9 @@ exports.run = async (client, message, args) => {
         .setFooter({ text: config.embed.thanks, iconURL: config.embed.picture });
 
         message.guild.members.kick(user, {reason: reason});
-        message.channel.send({ embeds: [KickedEmbed] });
+        message.channel.send({ embeds: [KickedEmbed] }).then(mes => {
+            mes.delete({timeout: 5000});
+        });
     } else {
         const noPermsEmbed = new MessageEmbed()
         .setColor(config.embed.color)
@@ -38,8 +42,9 @@ exports.run = async (client, message, args) => {
         .setTimestamp()
         .setFooter({ text: config.embed.thanks, iconURL: config.embed.picture });
         
-        message.channel.send({ embeds: [noPermsEmbed] });
-        message.delete({timeout: 1000});
+        message.channel.send({ embeds: [noPermsEmbed] }).then(mes => {
+            mes.delete({timeout: 5000});
+        });
     }
   
 }
