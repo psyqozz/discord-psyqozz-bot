@@ -19,7 +19,7 @@ exports.run = async (client, message, args) => {
             .setTimestamp()
             .setFooter({ text: config.embed.thanks, iconURL: config.embed.picture });
             message.channel.send({ embeds: [clearEmbed] }).then(mes => {
-                mes.delete({timeout: 5000});
+                setTimeout(() => mes.delete(), 10000)
             });
         } else {
             const wrongEmbed = new MessageEmbed()
@@ -29,7 +29,7 @@ exports.run = async (client, message, args) => {
             .setTimestamp()
             .setFooter({ text: config.embed.thanks, iconURL: config.embed.picture });
             message.channel.send({ embeds: [wrongEmbed] }).then(mes => {
-                mes.delete({timeout: 5000});
+                setTimeout(() => mes.delete(), 10000)
             });
         }
     } else {
@@ -41,7 +41,7 @@ exports.run = async (client, message, args) => {
         .setFooter({ text: config.embed.thanks, iconURL: config.embed.picture });
         
         message.channel.send({ embeds: [noPermsEmbed] }).then(mes => {
-            mes.delete({timeout: 5000});
+            setTimeout(() => mes.delete(), 10000)
         });
     }
   

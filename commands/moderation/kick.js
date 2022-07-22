@@ -18,7 +18,7 @@ exports.run = async (client, message, args) => {
         .setTimestamp()
         .setFooter({ text: config.embed.thanks, iconURL: config.embed.picture });
         if(!user || !reason) return message.channel.send({ embeds: [wrongEmbed] }).then(mes => {
-            mes.delete({timeout: 5000});
+            setTimeout(() => mes.delete(), 10000)
         });
 
         const KickedEmbed = new MessageEmbed()
@@ -32,7 +32,7 @@ exports.run = async (client, message, args) => {
 
         message.guild.members.kick(user, {reason: reason});
         message.channel.send({ embeds: [KickedEmbed] }).then(mes => {
-            mes.delete({timeout: 5000});
+            setTimeout(() => mes.delete(), 5000)
         });
     } else {
         const noPermsEmbed = new MessageEmbed()
@@ -43,7 +43,7 @@ exports.run = async (client, message, args) => {
         .setFooter({ text: config.embed.thanks, iconURL: config.embed.picture });
         
         message.channel.send({ embeds: [noPermsEmbed] }).then(mes => {
-            mes.delete({timeout: 5000});
+            setTimeout(() => mes.delete(), 10000)
         });
     }
   
