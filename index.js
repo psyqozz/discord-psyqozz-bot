@@ -13,6 +13,7 @@ const client = new Client({intents: [
 client.commands = new Collection();
 client.interactions = new Collection();
 client.manageRoles = new Collection();
+client.queue = new Map();
 
 
 const commandFiles = fs.readdirSync('./commands/').filter(f => f.endsWith('.js'));
