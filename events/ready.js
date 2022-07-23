@@ -1,5 +1,5 @@
 const config = require('../config.json');
-const getHistoryRuleMessage = require('../assets/ruleChannelHistory')
+const getHistoryRuleMessage = require('../assets/channelHistory/ruleChannelHistory')
 
 module.exports = {
     name: 'ready',

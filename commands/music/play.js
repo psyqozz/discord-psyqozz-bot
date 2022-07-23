@@ -1,7 +1,7 @@
-const { MessageEmbed } = require('discord.js');
 const discordVoice = require("@discordjs/voice");
-const config = require('../../config.json')
 const playDl = require('play-dl')
+const play = require('../../assets/music/play')
+const embed = require("../../assets/embed/embedStructure")
 
 exports.help = {
     name: "p"
@@ -70,62 +70,18 @@ exports.run = async (client, message, args) => {
         }
     } else {
         serverQueue.songs.push(song);
-        const addedSongEmbed = new MessageEmbed()
-        .setColor(config.embed.color)
-        .setAuthor({ name: 'Son ajouté à la queue'})
-        .setTitle(`**${song.title}**`)
-        .setURL(song.url)
-        .setThumbnail(song.thumbnails)
-        .addFields(
-            { name: '**Chaine**', value: `${song.ownerChannel}`, inline: true },
-            { name: '**Durée**', value: `${song.duration}`, inline: true },
-        )
-        .setTimestamp()
-        .setFooter({ text: config.embed.thanks, iconURL: config.embed.picture });
-        return message.channel.send({ embeds: [addedSongEmbed] });   
+        return embed(message,
+            `**${song.title}**`, 
+            song.url, 
+            {name: "Son ajouté à la queue"}, 
+            null, 
+            song.thumbnails, 
+            [
+                {name: "**Chaine**", value: `${song.ownerChannel}`, inline: true}, 
+                {name: "**Durée**", value: `${song.duration}`, inline: true}
+            ],
+            null,
+            true
+        );
     }
-}
-
-async function play(message, song, client){
-    const guild = message.guild;
-    const serverQueue = client.queue.get(guild.id);
-    if(!song){
-        serverQueue ? serverQueue.connection.destroy() : null;
-        client.queue.delete(message.guild.id)
-        return;
-    }
-
-    const stream = await playDl.stream(song.url);
-    serverQueue.connection.subscribe(serverQueue.player);
-
-    const resource = discordVoice.createAudioResource(stream.stream, {
-        inputType : stream.type
-    });
-    serverQueue.player.play(resource);
-    serverQueue.resource = resource;
-
-    const playEmbed = new MessageEmbed()
-	.setColor(config.embed.color)
-    .setAuthor({ name: 'En cours de lecture'})
-	.setTitle(`**${song.title}**`)
-    .setURL(song.url)
-    .setThumbnail(song.thumbnails)
-	.addFields(
-        { name: '**Chaine**', value: `${song.ownerChannel}`, inline: true },
-		{ name: '**Durée**', value: `${song.duration}`, inline: true },
-	)
-    .setTimestamp()
-	.setFooter({ text: config.embed.thanks, iconURL: config.embed.picture });
-
-    message.channel.send({ embeds: [playEmbed] });
-
-    serverQueue.player.on(discordVoice.AudioPlayerStatus.Idle, () => {
-        serverQueue.songs.shift();
-        play(message, serverQueue.songs[0], client);
-    })
-
-    serverQueue.player.on('error', error => {
-        console.log(error);
-        message.channel.send("❌ - Une erreur est survenue");
-    });
 }

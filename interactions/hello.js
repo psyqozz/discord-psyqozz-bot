@@ -1,5 +1,5 @@
 const config = require('../config.json');
-const { MessageEmbed } = require('discord.js');
+const embed = require("../assets/embed/embedStructure")
 
 exports.help = {
     name: 'hello'
@@ -13,12 +13,8 @@ exports.run = async (client, message, args) => {
 
     helloInteraction.forEach(e => {
         if(message.content.indexOf(e) !== -1) {
-             const AnwserEmbed = new MessageEmbed()
-            .setColor(config.embed.color)
-            .setTitle(`**Hola ça va ${nickname} **`)
-            .setFooter({ text: config.embed.thanks, iconURL: config.embed.picture });
-        
-            return message.channel.send({ embeds: [AnwserEmbed] });
+            const title = `**Hola ça va ${nickname} **`;
+            embed(message, title, null, null, null, null, null, null, null)
         }
     });    
     return;

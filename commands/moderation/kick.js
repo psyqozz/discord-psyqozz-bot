@@ -1,5 +1,4 @@
-const { MessageEmbed } = require('discord.js');
-const config = require('../../config.json')
+const embed = require("../../assets/embed/embedStructure")
 
 exports.help = {
     name: "kick"
@@ -11,38 +10,27 @@ exports.run = async (client, message, args) => {
         let reason = args.slice(1).join(" ");
 
         message.delete();
-        const wrongEmbed = new MessageEmbed()
-        .setColor(config.embed.color)
-        .setTitle('**Modération - Pour kick une personne**')
-        .setDescription(`⛔ - kick <member> <raison>`)
-        .setTimestamp()
-        .setFooter({ text: config.embed.thanks, iconURL: config.embed.picture });
-        if(!user || !reason) return message.channel.send({ embeds: [wrongEmbed] }).then(mes => {
+        let title = '**Modération - Pour kick une personne**';
+        let description = '**⛔ - kick <member> <raison>**';
+        if(!user || !reason) return embed(message, title, null, null, description, null, null, null, true).then(mes => {
             setTimeout(() => mes.delete(), 10000)
         });
 
-        const KickedEmbed = new MessageEmbed()
-        .setColor(config.embed.color)
-        .setTitle('**Modération**')
-        .setDescription(`⛔ - le membre ${user} a été kick du serveur`)
-        .addFields({ name: '**Raison**', value: `${reason}` })
-        .addFields({ name: '**kick par**', value: `${message.author.username}` })
-        .setTimestamp()
-        .setFooter({ text: config.embed.thanks, iconURL: config.embed.picture });
+        title = '**Modération**';
+        description = `⛔ - le membre ${user} a été kick du serveur`;
+        let fields = [
+            { name: '**Raison**', value: `${reason}` },
+            { name: '**kick par**', value: `${message.author.username}` }
+        ];
 
         message.guild.members.kick(user, {reason: reason});
-        message.channel.send({ embeds: [KickedEmbed] }).then(mes => {
+        embed(message, title, null, null, description, null, fields, null, true).then(mes => {
             setTimeout(() => mes.delete(), 5000)
         });
-    } else {
-        const noPermsEmbed = new MessageEmbed()
-        .setColor(config.embed.color)
-        .setTitle('**Modération**')
-        .setDescription('⛔ - Tu n\'as pas la permission pour faire ça.')
-        .setTimestamp()
-        .setFooter({ text: config.embed.thanks, iconURL: config.embed.picture });
-        
-        message.channel.send({ embeds: [noPermsEmbed] }).then(mes => {
+    } else {       
+        title = '**Modération**';
+        description = `⛔ - Tu n\'as pas la permission pour faire ça.`;
+        embed(message, title, null, null, description, null, null, null, true).then(mes => {
             setTimeout(() => mes.delete(), 10000)
         });
     }

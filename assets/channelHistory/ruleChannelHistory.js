@@ -1,4 +1,4 @@
-const config = require('../config.json');
+const config = require('../../config.json');
 
 module.exports = async(client) => {
     let guild = client.guilds.cache.find(guild => guild.id == config.env.guild_id);
