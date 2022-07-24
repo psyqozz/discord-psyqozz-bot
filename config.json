@@ -47,6 +47,10 @@
         },
         "status" : {
             "stop": "Ok, je me tire"
+        },
+        "video" : {
+            "video" : "video",
+            "playlist" : "playlist"
         }
     },
     "interaction" : {

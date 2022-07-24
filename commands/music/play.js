@@ -23,7 +23,7 @@ exports.run = async (client, message, args) => {
 
     let song = { title: '', url: '', thumbnails: '', duration: '', ownerChannel : ''};
     let info = "";
-    if(playDl.yt_validate(args[0]) === "video" && playDl.yt_validate(args[0])) {
+    if(playDl.yt_validate(args[0]) === config.musique.video.video || playDl.yt_validate(args[0]) === config.musique.video.playlist && playDl.yt_validate(args[0])) {
         info = await playDl.video_info(args[0]);
         song = { title: info.video_details.title, url: info.video_details.url, duration: info.video_details.durationRaw, thumbnails: info.video_details.thumbnails[0].url, ownerChannel : info.video_details.channel.name }
     } else {
