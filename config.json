@@ -13,7 +13,8 @@
         "color" : "#ff0000",
         "picture": "https://i.imgur.com/8U9Ae5d.png",
         "thanks": "Eh merci Psybot",
-        "logo_serveur": "https://i.imgur.com/hZu2RBT.png"
+        "logo_serveur": "https://i.imgur.com/hZu2RBT.png",
+        "cross": "https://i.imgur.com/gVrP4WE.png"
     },
     "tools" : {
         "one_message" : "message a été supprimé",
@@ -28,6 +29,21 @@
         "rules" : "- Respectez ceux que vous ne connaissez pas.\n - Pas de racisme/sexisme/homophobie/... \n - Toute pub sera sanctionné d'un ban. \n - Si vous avez un soucis, une demande de unban/unmute, une plainte, n'identifez personne. Ouvrez un ticket \n - Pas de haine envers d'autre gens \n - Pas de photo/pseudo incorrect \n",
         "sanction_title" : "**Sanction :**",
         "sanction" : "Tout ce qui va à l'encontre du règlement et de la bien séance sera sanctionné d'un mute ou d'un ban life suivant le cas. Pour accepter le règlement du serveur veuillez interagir avec la réaction ci-dessous !"
+    },
+    "musique" : {
+        "error" : {
+            "voice_channel" : "Connecte toi dans un salon",
+            "wrong_command" : "Balance une musique !play <music>",
+            "permission_connect" : "Je peux pas me connecter au channel",
+            "permission_speak" : "Je peux pas parler",
+            "no_video": "Aucune vidéo trouvé",
+            "some_error": "Une erreur est survenue",
+            "no_sound": "Pas de son en cours",
+            "no_sound_skipped": "Aucun son trouvé"
+        },
+        "status" : {
+            "stop": "Ok, je me tire"
+        }
     },
     "interaction" : {
         "hello" : [

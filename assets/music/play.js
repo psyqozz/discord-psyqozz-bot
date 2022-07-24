@@ -24,19 +24,13 @@ async function play(message, song, client) {
     serverQueue.player.play(resource);
     serverQueue.resource = resource;
 
-    embed(message,
-        `**${song.title}**`, 
-        song.url, 
-        {name: "En cours de lecture"}, 
-        null, 
-        song.thumbnails, 
-        [
-            {name: "**Chaine**", value: `${song.ownerChannel}`, inline: true}, 
-            {name: "**Durée**", value: `${song.duration}`, inline: true}
-        ],
-        null,
-        true
-    );
+    const title = `**${song.title}**`;
+    const author = {name: "En cours de lecture"};
+    const fields = [
+        {name: "**Chaine**", value: `${song.ownerChannel}`, inline: true}, 
+        {name: "**Durée**", value: `${song.duration}`, inline: true}
+    ];
+    embed(message, title, song.url, author, null, song.thumbnails, fields,null,true);
 
     serverQueue.player.on(discordVoice.AudioPlayerStatus.Idle, () => {
         serverQueue.songs.shift();
@@ -44,7 +38,7 @@ async function play(message, song, client) {
     })
 
     serverQueue.player.on('error', error => {
+        embed(message, null, null, {name: config.musique.error.some_error, iconUrl: config.embed.cross}, null, null, null, null, false);
         console.log(error);
-        message.channel.send("❌ - Une erreur est survenue");
     });
 }

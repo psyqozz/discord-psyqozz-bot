@@ -2,6 +2,7 @@ const discordVoice = require("@discordjs/voice");
 const playDl = require('play-dl')
 const play = require('../../assets/music/play')
 const embed = require("../../assets/embed/embedStructure")
+const config = require("../../config.json");
 
 exports.help = {
     name: "p"
@@ -13,12 +14,12 @@ exports.run = async (client, message, args) => {
     const serverQueue = client.queue.get(message.guild.id);
     const voice_channel = message.member.voice.channel;
 
-    if(!voice_channel) return message.reply("❌ - Connecte toi dans un salon");
-    if(!args[0]) return message.reply("❌ - Balance une musique !play <music>");
+    if(!voice_channel) return embed(message, null, null, {name: config.musique.error.voice_channel, iconUrl: config.embed.cross}, null, null, null, null, false);
+    if(!args[0]) return embed(message, null, null, {name: config.musique.error.wrong_command, iconUrl: config.embed.cross}, null, null, null, null, false);
     //if(client.voice.connections.size > 0) return message.reply("❌ - Je suis déjà dans un channel");
     const permissions = voice_channel.permissionsFor(message.client.user);
-    if(!permissions.has('CONNECT')) return message.reply("❌ - Je peux pas me connecter au channel");
-    if(!permissions.has('SPEAK')) return message.reply("❌ - Je peux pas parler");
+    if(!permissions.has('CONNECT')) return embed(message, null, null, {name: config.musique.error.permission_connect, iconUrl: config.embed.cross}, null, null, null, null, false);
+    if(!permissions.has('SPEAK')) return embed(message, null, null, {name: config.musique.error.permission_speak, iconUrl: config.embed.cross}, null, null, null, null, false);
 
     let song = { title: '', url: '', thumbnails: '', duration: '', ownerChannel : ''};
     let info = "";
@@ -32,7 +33,7 @@ exports.run = async (client, message, args) => {
         if(yt_info[0]){
             song = { title: yt_info[0].title, url: yt_info[0].url, thumbnails: yt_info[0].thumbnails[0].url, duration: yt_info[0].durationRaw, ownerChannel: yt_info[0].channel.name }
         } else {
-            return message.reply("❌ - Aucune vidéo trouvé");
+            return embed(message, null, null, {name: config.musique.error.no_video, iconUrl: config.embed.cross}, null, null, null, null, false);
         }
     } 
 
@@ -63,25 +64,19 @@ exports.run = async (client, message, args) => {
             queueConstruct.player = player;
             queueConstruct.connection = connection;
 
-            play(message, queueConstruct.songs[0], client, queueConstruct.stream);
+            play(message, queueConstruct.songs[0], client);
         } catch (error) {
-            message.channel.send("❌ - Une erreur est survenue");
+            embed(message, null, null, {name: config.musique.error.some_error, iconUrl: config.embed.cross}, null, null, null, null, false);
             console.log(error);
         }
     } else {
         serverQueue.songs.push(song);
-        return embed(message,
-            `**${song.title}**`, 
-            song.url, 
-            {name: "Son ajouté à la queue"}, 
-            null, 
-            song.thumbnails, 
-            [
-                {name: "**Chaine**", value: `${song.ownerChannel}`, inline: true}, 
-                {name: "**Durée**", value: `${song.duration}`, inline: true}
-            ],
-            null,
-            true
-        );
+        const title = `**${song.title}**`;
+        const author = {name: "Son ajouté à la queue"};
+        const fields =  [
+            {name: "**Chaine**", value: `${song.ownerChannel}`, inline: true}, 
+            {name: "**Durée**", value: `${song.duration}`, inline: true}
+        ];
+        return embed(message, title, song.url, author, null, song.thumbnails, fields, null, true);
     }
 }
