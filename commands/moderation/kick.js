@@ -16,7 +16,6 @@ exports.run = async (client, message, args) => {
             setTimeout(() => mes.delete(), 10000)
         });
 
-        title = '**Modération**';
         description = `⛔ - le membre ${user} a été kick du serveur`;
         let fields = [
             { name: '**Raison**', value: `${reason}` },
@@ -24,13 +23,11 @@ exports.run = async (client, message, args) => {
         ];
 
         message.guild.members.kick(user, {reason: reason});
-        embed(message, title, null, null, description, null, fields, null, true).then(mes => {
+        embed(message, config.moderation.title_moderation, null, null, description, null, fields, null, true).then(mes => {
             setTimeout(() => mes.delete(), 5000)
         });
     } else {       
-        title = '**Modération**';
-        description = `⛔ - Tu n\'as pas la permission pour faire ça.`;
-        embed(message, title, null, null, description, null, null, null, true).then(mes => {
+        embed(message, config.moderation.title_moderation, null, null, config.moderation.no_permission, null, null, null, true).then(mes => {
             setTimeout(() => mes.delete(), 10000)
         });
     }

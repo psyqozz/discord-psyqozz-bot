@@ -9,10 +9,7 @@ exports.run = async (client, message, args) => {
     message.delete();
 
     if(!message.member.permissions.has('MANAGE_GUILD')) {
-        let title = '**Modération**';
-        let description = '⛔ - Tu n\'as pas la permission pour faire ça.';
-        
-        return embed(message, title, null, null, description, null, null, null, true).then(mes => {
+        return embed(message, config.moderation.title_moderation, null, null, config.moderation.no_permission, null, null, null, true).then(mes => {
             mes.delete({timeout: 5000});
         });
     }

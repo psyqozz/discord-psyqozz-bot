@@ -30,6 +30,10 @@
         "sanction_title" : "**Sanction :**",
         "sanction" : "Tout ce qui va à l'encontre du règlement et de la bien séance sera sanctionné d'un mute ou d'un ban life suivant le cas. Pour accepter le règlement du serveur veuillez interagir avec la réaction ci-dessous !"
     },
+    "moderation": {
+        "title_moderation" : "**Modération**",
+        "no_permission" : "⛔ - Tu n'as pas la permission pour faire ça."
+    },
     "musique" : {
         "error" : {
             "voice_channel" : "Connecte toi dans un salon",
