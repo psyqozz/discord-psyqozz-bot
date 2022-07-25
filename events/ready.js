@@ -1,5 +1,6 @@
 const config = require('../config.json');
 const getHistoryRuleMessage = require('../assets/channelHistory/ruleChannelHistory')
+const twitterFeed = require('../socialNetwork/twitter')
 
 module.exports = {
     name: 'ready',
@@ -9,5 +10,6 @@ module.exports = {
 
         client.user.setPresence({ activities: [{ name: config.client.activity, type: config.client.type }] });
         getHistoryRuleMessage(client);
+        twitterFeed(client);
     }
 }

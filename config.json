@@ -9,6 +9,12 @@
         "activity": "EN DEV",
         "type": "PLAYING"
     },
+    "twitter" : {
+        "channel_message": "|| @everyone || Psyqozz_ vient de tweet",
+        "channel_id": "1000826279030960210",
+        "tweet_username": "Psyqozz_",
+        "tweet_user_id": "4841429032"
+    },
     "embed": {
         "color" : "#ff0000",
         "picture": "https://i.imgur.com/8U9Ae5d.png",

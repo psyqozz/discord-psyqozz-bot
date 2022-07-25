@@ -13,7 +13,7 @@ module.exports = async(message, title, url, author = {name: String, iconUrl: Str
     thumbnail ? embed.setThumbnail(thumbnail) : null;
     fields ? fields.forEach(field => { embed.addFields({ name: field.name, value: field.value, inline: field.inline }) }) : null;
     timestamp ? embed.setTimestamp() : null;
-    image ? embed.setTimestamp() : null;
+    image ? embed.setImage(image) : null;
 
 	embed.setFooter({ text: config.embed.thanks, iconURL: config.embed.picture });
 
