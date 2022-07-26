@@ -15,6 +15,13 @@
         "tweet_username": "Psyqozz_",
         "tweet_user_id": "4841429032"
     },
+    "twitch" : {
+        "channel_message": "|| @everyone || Psyqozz_ a lancé let's go ",
+        "user" : "Psyqozz_",
+        "channel_id": "849355761380360193",
+        "app_client_id" : "ern8bo9b7qq0bt2fy6eihdujccm8hn",
+        "app_secret_token": "54yz1aon5zrsrbnzo63xadaw0ti2dl"
+    },
     "embed": {
         "color" : "#ff0000",
         "picture": "https://i.imgur.com/8U9Ae5d.png",
