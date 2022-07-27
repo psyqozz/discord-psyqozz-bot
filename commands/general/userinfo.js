@@ -6,8 +6,8 @@ exports.help = {
 
 exports.run = async (client, message, args) => {
     const username = message.mentions.users.first() ? message.mentions.users.first() : message.author;
-    let member = message.guild.members.cache.get(username.id);
-    let nickname = member ? member.displayName : username.username;
+    const member = message.guild.members.cache.get(username.id);
+    const nickname = member ? member.displayName : username.username;
 
     const author = {name: `Information sur ${nickname} `, iconURL: username.displayAvatarURL()};
     const description = `Information sur l'utilisateur ${username.tag}`;

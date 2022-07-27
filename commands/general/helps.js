@@ -12,6 +12,7 @@ exports.run = async (client, message, args) => {
 		{ name: '**🌍 - Général**', value: '`!help, !bark, !jerefuse, !carlos, !monia, !#`' },
 		{ name: '**⚔ - Modération**', value: '`!ban, !kick`' },
 		{ name: '**🛠 - Outils**', value: '`!clear`' },
+		{ name: '**🥇 - Ranking**', value: '`!rank, !lb`' },
 		{ name: '**🎶 - Musique**', value: '`!play, !stop, !skip`' },
 	]
 	embed(message, title, null, null, description, config.embed.picture, fields, null, null);

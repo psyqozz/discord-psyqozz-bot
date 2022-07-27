@@ -1,6 +1,8 @@
 const { Client, Intents, Collection } = require('discord.js');
 const config = require('./config.json')
+const mongoose = require('mongoose');
 const fs = require('fs');
+require('dotenv').config();
 
 const client = new Client({intents: [
         Intents.FLAGS.GUILDS,
@@ -15,6 +17,15 @@ client.interactions = new Collection();
 client.manageRoles = new Collection();
 client.queue = new Map();
 
+const options = {
+    autoIndex: false,
+    maxPoolSize: 10,
+    serverSelectionTimeoutMS: 5000,
+    socketTimeoutMS: 45000,
+    family: 4
+}
+mongoose.connect(process.env.DATABASE_URI, options).then(() => { console.log("client connected to database")})
+.catch(err => {console.log("Erreur db : ",err)})
 
 const commandFiles = fs.readdirSync('./commands/').filter(f => f.endsWith('.js'));
 for (const file of commandFiles) {

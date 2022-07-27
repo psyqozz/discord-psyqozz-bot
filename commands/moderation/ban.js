@@ -7,17 +7,17 @@ exports.help = {
 exports.run = async (client, message, args) => {
     if(message.member.permissions.has(['BAN_MEMBERS'])) {
         user = message.mentions.users.first();
-        let reason = args.slice(1).join(" ");
+        const reason = args.slice(1).join(" ");
 
         message.delete();
-        let title = '**Modération - Pour ban une personne**';
+        const title = '**Modération - Pour ban une personne**';
         let description = '**⛔ - ban <member> <raison>**';
         if(!user || !reason) return embed(message, title, null, null, description, null, null, null, true).then(mes => {
             setTimeout(() => mes.delete(), 10000)
         });
 
         description = `⛔ - le membre ${user} a été bannis du serveur`;
-        let fields = [
+        const fields = [
             { name: '**Raison**', value: `${reason}` },
             { name: '**Ban par**', value: `${message.author.username}` }
         ];

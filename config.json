@@ -22,6 +22,9 @@
         "app_client_id" : "ern8bo9b7qq0bt2fy6eihdujccm8hn",
         "app_secret_token": "54yz1aon5zrsrbnzo63xadaw0ti2dl"
     },
+    "level" : {
+        "channel_id" : "1000097036647006279"
+    },
     "embed": {
         "color" : "#ff0000",
         "picture": "https://i.imgur.com/8U9Ae5d.png",

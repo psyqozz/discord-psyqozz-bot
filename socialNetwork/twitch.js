@@ -10,6 +10,7 @@ const twitch = new TwitchApi({
 module.exports = async(client) => {
     let isLiveMemory = false;
 
+    console.log('Setting up Twitter....')
     const run = async function Run() {
         await twitch.getStreams({ channel: `${config.twitch.user}` }).then(async data => {
             const r = data.data[0]

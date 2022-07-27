@@ -5,13 +5,13 @@ module.exports = {
     execute(message, client) {
         if(message.author.bot || message.channel.type === 'dm') return;
 
-        let messageArray = message.content.split(" ");
-        let cmd = messageArray[0];
-        let args = messageArray.slice(1);
+        const messageArray = message.content.split(" ");
+        const cmd = messageArray[0];
+        const args = messageArray.slice(1);
 
         if(!cmd.startsWith(config.client.prefix)) return;
 
-        let commandeFile = client.commands.get(cmd.slice(config.client.prefix.length));
+        const commandeFile = client.commands.get(cmd.slice(config.client.prefix.length));
         if(commandeFile) commandeFile.run(client, message, args);
     }
 }

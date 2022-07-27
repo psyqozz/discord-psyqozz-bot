@@ -47,7 +47,7 @@ module.exports = async(client) => {
   }
 
   try {
-    console.log('Setting up Twitter....')
+    console.log('Setting up Twitter....');
     const body = {
       "add": [
         {"value": `from:${config.twitter.tweet_username}`, "tag": "from Me!!"}

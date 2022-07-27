@@ -14,7 +14,7 @@ exports.run = async (client, message, args) => {
         });
     }
 
-    let fields = [
+    const fields = [
         { name: `**📖 - ** ${config.channel.rule_title}`, value: `${config.channel.rules}` },
 		{ name: `**⚔ - ** ${config.channel.sanction_title}`, value: `${config.channel.sanction}` },
     ];
