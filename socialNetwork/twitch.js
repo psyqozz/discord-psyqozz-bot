@@ -9,8 +9,9 @@ const twitch = new TwitchApi({
 
 module.exports = async(client) => {
     let isLiveMemory = false;
+    const url = `https://www.twitch.tv/${config.twitch.user}`;
 
-    console.log('Setting up Twitter....')
+    console.log('Setting up Twitch....')
     const run = async function Run() {
         await twitch.getStreams({ channel: `${config.twitch.user}` }).then(async data => {
             const r = data.data[0]
@@ -19,11 +20,10 @@ module.exports = async(client) => {
             if (r !== undefined) {
                 if (r.type === "live") {
                     isLiveMemory === false ? isLiveMemory = true : isLiveMemory = null;
-                    if (isLiveMemory) {
-                        const embed = new MessageEmbed()
+                    if (isLiveMemory) {                        const embed = new MessageEmbed()
                         .setColor(config.embed.color)
                         .setTitle(r.title)
-                        .setURL(`https://www.twitch.tv/${config.twitch.user}`)
+                        .setURL(url)
                         .setAuthor({ name: r.user_name})
                         .addFields(
                             { name: "Jeu", value: `${r.game_name}`, inline: true},
@@ -31,7 +31,7 @@ module.exports = async(client) => {
                         )
                         .setImage(r.getThumbnailUrl())
                         .setTimestamp();                        
-                        ChannelAnnounceLive.send({content: `${config.twitch.channel_message} https://www.twitch.tv/${config.twitch.user}`, embeds: [embed]});
+                        ChannelAnnounceLive.send({content: `${config.twitch.channel_message} ${url}`, embeds: [embed]});
                         return;
                     }
                 } else {
