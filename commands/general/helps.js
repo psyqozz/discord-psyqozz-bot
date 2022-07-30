@@ -9,7 +9,7 @@ exports.run = async (client, message, args) => {
 	const title = '**🧾 __Liste des commandes__ 🧾**';
 	const description = 'Nom de la catégorie et les commandes associées';
 	const fields = [
-		{ name: '**🌍 - Général**', value: '`!help, !bark, !jerefuse, !carlos, !monia, !#`' },
+		{ name: '**🌍 - Général**', value: '`!help, !bark, !jerefuse, !carlos, !monia, !#, !grenade`' },
 		{ name: '**⚔ - Modération**', value: '`!ban, !kick`' },
 		{ name: '**🛠 - Outils**', value: '`!clear`' },
 		{ name: '**🥇 - Ranking**', value: '`!rank, !lb`' },
