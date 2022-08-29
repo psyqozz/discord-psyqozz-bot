@@ -10,6 +10,7 @@ const twitch = new TwitchApi({
 module.exports = async(client) => {
     let isLiveMemory = false;
     const url = `https://www.twitch.tv/${config.twitch.user}`;
+    const mLive = `${config.twitch.channel_message} ${url}`;
 
     console.log('Setting up Twitch....')
     const run = async function Run() {
@@ -31,7 +32,7 @@ module.exports = async(client) => {
                         )
                         .setImage(r.getThumbnailUrl())
                         .setTimestamp();                        
-                        ChannelAnnounceLive.send({content: `${config.twitch.channel_message} ${url}`, embeds: [embed]});
+                        ChannelAnnounceLive.send({content: mLive, embeds: [embed]});
                         return;
                     }
                 } else {
