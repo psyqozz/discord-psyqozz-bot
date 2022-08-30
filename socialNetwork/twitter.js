@@ -12,13 +12,15 @@ const t = new twitter({
 
 async function sendMessage (tweet, client) {
   console.log(tweet)
-  var url = "https://twitter.com/user/status/" + tweet.id;
-  try {
-    const channel = await client.channels.fetch(config.twitter.channel_id)
-    channel.send(`${config.twitter.channel_message} ${url}`)
-    console.log('channel', [config.twitter.channel_id, channel])
-  } catch (error) {
-    console.error(error);
+  if(tweet) {
+    var url = "https://twitter.com/user/status/" + tweet.id;
+    try {
+      const channel = await client.channels.fetch(config.twitter.channel_id)
+      channel.send(`${config.twitter.channel_message} ${url}`)
+      console.log('channel', [config.twitter.channel_id, channel])
+    } catch (error) {
+      console.error(error);
+    }
   }
 }
   
