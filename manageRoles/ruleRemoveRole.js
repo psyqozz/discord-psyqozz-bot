@@ -10,7 +10,7 @@ exports.run = async (reaction, user) => {
             (r) => r.id === config.channel.role_id
         );
 
-        const member = reaction.message.guild.members.cache.find(member => member.id === user.id);
+        let member = reaction.message.guild.members.cache.find(member => member.id === user.id);
         if(!member){
             await reaction.message.guild.members.fetch();
             member = reaction.message.guild.members.cache.find(member => member.id === user.id);

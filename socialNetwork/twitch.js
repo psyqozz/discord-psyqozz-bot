@@ -21,7 +21,8 @@ module.exports = async(client) => {
             if (r !== undefined) {
                 if (r.type === "live") {
                     isLiveMemory === false ? isLiveMemory = true : isLiveMemory = null;
-                    if (isLiveMemory) {                        const embed = new MessageEmbed()
+                    if (isLiveMemory) {                        
+                        const embed = new MessageEmbed()
                         .setColor(config.embed.color)
                         .setTitle(r.title)
                         .setURL(url)
@@ -33,6 +34,7 @@ module.exports = async(client) => {
                         .setImage(r.getThumbnailUrl())
                         .setTimestamp();                        
                         ChannelAnnounceLive.send({content: mLive, embeds: [embed]});
+                        clearInterval(null);
                         return;
                     }
                 } else {
